@@ -1,19 +1,18 @@
 import datetime
 import math
-import time
 
 
 def main():     # main method
     get_current_time()
-    p1 = Person("Jonno", 1, 6, 2001, "male")
-    p2 = Person("Sheila", 1, 6, 2002, "female")
-    match_1, match_2 = calc_match_age(p1, p2)
-    print(match_1)
-    print(match_2)
-    match_date, time_to_match = calc_match_date(match_1, p1)
-    print(year_to_date(match_date))
-    possible = is_match_possible(p1, p2)
-    print(possible)
+    # p1 = Person("Jonno", 1, 6, 2001, "male")
+    # p2 = Person("Sheila", 1, 6, 2002, "female")
+    # match_1, match_2 = calc_match_age(p1, p2)
+    # print(match_1)
+    # print(match_2)
+    # match_date, time_to_match = calc_match_date(match_1, p1)
+    # print(year_to_date(match_date))
+    # possible = is_match_possible(p1, p2)
+    # print(possible)
 
 
 def get_current_time():     # fetches current date, converts it to date in terms of years
@@ -23,6 +22,7 @@ def get_current_time():     # fetches current date, converts it to date in terms
     year = now.year
     global nowTime
     nowTime = day + month + year
+    return nowTime
 
 
 class Person:
@@ -58,7 +58,11 @@ def calc_match_date(m_age, p_1):
 
 
 def is_match_possible(p_1, p_2):
-    if (p_2.age >= p_1.crit_age_below) and (p_1.age >= p_1.crit_age_below):
+    now_time = get_current_time()
+    m_age_1, m_age_2 = calc_match_age(p_1, p_2)
+    m_date_1, m_date_2 = calc_match_date(m_age_1, p_1)
+
+    if m_date_1 >= now_time:
         return "SAFE"
     else:
         return "NOT SAFE"
@@ -111,7 +115,7 @@ def year_to_age(time):
         return f"{year} y, {month} m, {day} d"
 
 
-# main()
+main()
 
 
 
