@@ -78,7 +78,7 @@ class Root(toga.App):
         heading_r = common_funcs.heading('RESULTS')
         safe, self.s = common_funcs.text_input('safe?', True)
         m_date, self.m_d = common_funcs.text_input('match date', True)
-        t_to_m_date, self.t_t_m_d = common_funcs.text_input('t- match date', True)
+        t_to_m_date, self.t_t_m_d = common_funcs.text_input('time until safe', True)
 
         top_box.add(left_box)
         top_box.add(right_box)

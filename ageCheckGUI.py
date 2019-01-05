@@ -44,10 +44,16 @@ def create_people(name, day, month, year, gender):
 
 
 def calc_match_age(p_1, p_2):
-    age_diff = p_1.age - p_2.age
-    match_1 = 2 * age_diff + (2 * 7)
-    match_2 = match_1 - age_diff
-    return match_1, match_2
+    if p_1.age >= p_2.age:
+        age_diff = p_1.age - p_2.age
+        match_1 = 2 * age_diff + (2 * 7)
+        match_2 = match_1 - age_diff
+        return match_1, match_2
+    else:
+        age_diff = p_2.age - p_1.age
+        match_2 = 2 * age_diff + (2 * 7)
+        match_1 = match_2 - age_diff
+        return match_1, match_2
 
 
 def calc_match_date(m_age, p_1):
@@ -58,11 +64,9 @@ def calc_match_date(m_age, p_1):
 
 
 def is_match_possible(p_1, p_2):
-    now_time = get_current_time()
     m_age_1, m_age_2 = calc_match_age(p_1, p_2)
-    m_date_1, m_date_2 = calc_match_date(m_age_1, p_1)
 
-    if m_date_1 >= now_time:
+    if (m_age_1 <= p_1.age) and (m_age_2 <= p_2.age):
         return "SAFE"
     else:
         return "NOT SAFE"
@@ -108,11 +112,7 @@ def year_to_age(time):
 
     day = round(t_month_days)
 
-    if time <= 0:
-        return f"{year} y, {month} m, {day} d ago"
-
-    else:
-        return f"{year} y, {month} m, {day} d"
+    return f"{year} y, {month} m, {day} d"
 
 
 main()

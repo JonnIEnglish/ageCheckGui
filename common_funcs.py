@@ -73,7 +73,7 @@ def year_list():
     now_year = now.year
     arr = []
 
-    for i in range(-(now_year-16), -1930):
+    for i in range(-now_year, -1900):
         arr.append(-i)
 
     return arr
