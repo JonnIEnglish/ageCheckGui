@@ -63,10 +63,14 @@ def calc_match_date(m_age, p_1):
     return match_date, from_now_diff
 
 
-def is_match_possible(p_1, p_2):
-    m_age_1, m_age_2 = calc_match_age(p_1, p_2)
+def is_match_possible(p1, p2):
+    p1 = p1
+    p2 = p2
+    match_age_1, match_age_2 = calc_match_age(p1, p2)
+    age_1 = p1.age
+    age_2 = p2.age
 
-    if (m_age_1 <= p_1.age) and (m_age_2 <= p_2.age):
+    if (match_age_1 <= age_1) and (match_age_2 <= age_2):
         return "SAFE"
     else:
         return "NOT SAFE"
@@ -81,7 +85,7 @@ def year_to_date(time):
         year += 1
         t_year_days -= 365.25
 
-    month = 1
+    month = 0
     t_month_days = t_year_days
     while t_month_days > 31:
         t_month_days -= 30.4375
